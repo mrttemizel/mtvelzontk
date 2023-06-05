@@ -1,9 +1,17 @@
 @extends('backend.components.master')
 @section('title')
-    Kys Kodu
+    KYS Kodu
 @endsection
 @section('css')
     <link href="{{asset('backend/assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <!--datatable css-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
+    <!--datatable responsive css-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+
 @endsection
 @section('content')
     @component('backend.components.breadcrumb')
@@ -11,11 +19,11 @@
             KYS
         @endslot
         @slot('title')
-            Kys Kodu
+            KYS Kodu
         @endslot
     @endcomponent
 
-     <div class="row">
+    <div class="row">
         <div class="col-lg-12">
             @if (session()->get('success'))
                 <div class="alert alert-success alert-dismissible alert-solid alert-label-icon fade show"
@@ -28,63 +36,39 @@
             @if (session()->get('error'))
                 <div class="alert alert-danger alert-dismissible alert-solid alert-label-icon fade show"
                      role="alert">
-                    <i class="ri-check-double-line label-icon"></i><strong>  {{ session()->get('success') }}</strong></strong>
+                    <i class="ri-check-double-line label-icon"></i><strong>  {{ session()->get('error') }}</strong></strong>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"
                             aria-label="Close"></button>
                 </div>
             @endif
-            <div class="card ">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Kys Kategori Ekle</h4>
-                </div><!-- end card header -->
-                <form action="#" method="POST" >
-                    @csrf
-                    <div class="card-body">
-                        <div class="live-preview">
-                            <div class="row gy-3">
-                                <div class="col-xl-12 col-md-12">
-                                    <div>
-                                        <label for="basiInput" class="form-label">Kys Kategori Adı : <span class="text-danger">*</span></label>
-                                        <input type="text" name="kys_category_name" placeholder="Kys Kategori Adı" class="form-control" value="{{ old('name') }}">
-                                        <span class="text-danger">
-                                    @error('kys_category_name')
-                                            {{ $message }}
-                                            @enderror
-                            </span>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12">
-                                    <div class="hstack gap-2 justify-content-end">
-                                        <button type="submit" class="btn btn-primary">Ekle</button>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">KYS Kodu Listesi</h5>
+                            <button type="button"  id="addKysCode" class="btn btn-success waves-effect waves-light d-flex justify-content-between align-items-cente"><i class="ri-add-line"></i> KYS Kodu Ekle</button>
                         </div>
-                    </div><!-- end card body -->
-                </form>
-            </div>
+                        <div class="card-body">
+                            <table id="alternative-pagination" class="table nowrap dt-responsive align-middle table-hover table-bordered" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>SR No.</th>
+                                    <th>Kys Kodu</th>
+                                    <th>Kys Kategorisi</th>
+                                    <th>Kys Açıklaması</th>
+                                    <th>Düzenle</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
         </div>
     </div>
-
-
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card ">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Kys Kategori Listesi</h4>
-                </div><!-- end card header -->
-
-                    <div class="card-body">
-                        <!-- Striped Rows -->
-
-                    </div><!-- end card body -->
-
-            </div>
-    </div>
-    </div>
-
 
 @endsection
 
@@ -94,7 +78,20 @@
     <script src="{{ asset('backend/assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/pages/sweetalerts.init.js') }}"></script>
 
+    <!--datatable js-->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
 
+
+    <script src="{{asset('backend/assets/js/pages/datatables.init.js')}}"></script>
+
+    <script>
+        $(document).ready(function (){
+
+        });
+    </script>
 
 @endsection
 

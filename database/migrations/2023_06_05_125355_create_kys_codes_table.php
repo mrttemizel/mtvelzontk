@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('kys_codes', function (Blueprint $table) {
             $table->id();
+            $table->string('code_name');
+            $table->string('code_description');
             $table->timestamps();
+
+            $table->unsignedBigInteger('kyscategory_id')->nullable();
+            $table->foreign('kyscategory_id')->references('id')->on('kys_categories');
+
         });
     }
 
