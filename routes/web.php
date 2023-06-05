@@ -1,21 +1,11 @@
 <?php
 
 use App\Http\Controllers\backend\auth\AuthController;
+use App\Http\Controllers\backend\kys\KyscategoryController;
+use App\Http\Controllers\backend\kys\KysKodeController;
 use App\Http\Controllers\backend\user\UserController;
+
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-
 
 
 Route::get('/',[AuthController::class,'login'])->name('auth.login');
@@ -45,5 +35,12 @@ Route::middleware('auth')->group(function (){
         Route::post('/user/image-update',[UserController::class,'image_update'])->name('users.image.update');
         Route::post('/user/information-update',[UserController::class,'information_update'])->name('users.information.update');
         Route::post('/user/password-update',[UserController::class,'password_update'])->name('users.password.update');
+
+        Route::get('/kys-category/index',[KyscategoryController::class,'index'])->name('kys.category.index');
+        Route::post('/kys-category/store',[KyscategoryController::class,'store'])->name('kys.category.store');
+        Route::get('/kys-category/delete/{id}',[KyscategoryController::class,'delete'])->name('kys.category.delete');
+
+        Route::get('/kys-code/index',[KysKodeController::class,'index'])->name('kys.code.index');
+        Route::post('/kys-code/store',[KysKodeController::class,'store'])->name('kys.code.store');
     });
 });
