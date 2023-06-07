@@ -9,7 +9,5 @@ class KysCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'kys_category_name',
-    ];
+    protected $guarded = [];
 }

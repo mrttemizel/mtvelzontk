@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function (){
         Route::get('/kys-category/delete/{id}',[KyscategoryController::class,'delete'])->name('kys.category.delete');
 
         Route::get('/kys-code/index',[KysKodeController::class,'index'])->name('kys.code.index');
+        Route::post('/kys-code/store',[KysKodeController::class,'store'])->name('kys.code.store');
 
     });
 });
