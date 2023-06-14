@@ -5,7 +5,7 @@ namespace App\Http\Controllers\backend\kys;
 use App\Http\Controllers\Controller;
 use App\Models\KysCategory;
 use Illuminate\Http\Request;
-
+use App\Models\KysCode;
 class KyscategoryController extends Controller
 {
     public  function  index(){
@@ -35,13 +35,15 @@ class KyscategoryController extends Controller
     public function delete($id)
     {
         $data = KysCategory::find($id);
-
         $query = $data->delete();
         if (!$query) {
-            return back()->with('error', 'KYS Kategori silme bir hata oluştu!');
+            return back()->with('error', 'KYS Kodu  düzenlerken bir hata oluştu!');
         } else {
-            return back()->with('success', 'KYS Kategori silme işlemi başarılı.');
+            return back()->with('success', 'KYS Kodu  işlemi başarılı.');
         }
+
+
+
     }
 
 

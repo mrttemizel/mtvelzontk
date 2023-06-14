@@ -36,9 +36,7 @@ Route::middleware('auth')->group(function (){
         Route::post('/user/information-update',[UserController::class,'information_update'])->name('users.information.update');
         Route::post('/user/password-update',[UserController::class,'password_update'])->name('users.password.update');
 
-        Route::get('/kys-category/index',[KyscategoryController::class,'index'])->name('kys.category.index');
-        Route::post('/kys-category/store',[KyscategoryController::class,'store'])->name('kys.category.store');
-        Route::get('/kys-category/delete/{id}',[KyscategoryController::class,'delete'])->name('kys.category.delete');
+
 
         Route::get('/kys-code/index',[KysKodeController::class,'index'])->name('kys.code.index');
         Route::get('/kys-code/create',[KysKodeController::class,'create'])->name('kys.code.create');

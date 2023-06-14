@@ -37,7 +37,7 @@
                 <div class="card-header align-items-center d-flex">
                     <h4 class="card-title mb-0 flex-grow-1">Kys Kategori Ekle</h4>
                 </div><!-- end card header -->
-                <form action="{{route('kys.category.store')}}" method="POST">
+                <form action="#" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="live-preview">
@@ -95,11 +95,7 @@
                             <tr>
                                 <th scope="row">{{$i}}</th>
                                 <td>{{$datas->kys_category_name}}</td>
-                                <td><a href="javascript:void(0)"
-                                       data-url={{route('kys.category.delete', ['id'=>$datas->id]) }} data-id={{ $datas->id }} class="link-danger"
-                                       id="delete_category"><i class="ri-delete-bin-5-line"></i></a>
 
-                </td>
                 </tr>
                 @endforeach
 
@@ -120,26 +116,7 @@
     <script src="{{ asset('backend/assets/js/pages/sweetalerts.init.js') }}"></script>
 
 
-    <script>
-        $(document).on('click', '#delete_category', function () {
-            var user_id = $(this).attr('data-id');
-            const url = $(this).attr('data-url');
-            Swal.fire({
-                title: 'Emin misiniz?',
-                text: "Bu kategoriyi silmek istediğinize emin misiniz?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Evet, sil!',
-                cancelButtonText: 'Vazgeç'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = url;
-                }
-            });
-        });
-    </script>
+
 
 @endsection
 

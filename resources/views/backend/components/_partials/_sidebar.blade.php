@@ -47,10 +47,10 @@
                         <ul class="nav nav-sm flex-column">
 
                             <li class="nav-item">
-                                <a href="{{route('kys.category.index')}}" class="nav-link"><span data-key="t-job">Yeni KYS Kategori</span> <span class="badge badge-pill bg-success" data-key="t-new">+</span></a>
+                                <a href="{{route('kys.code.index')}}" class="nav-link"><span data-key="t-job">Yeni KYS Kodu Listele</span> <span class="badge badge-pill bg-success" data-key="t-new">+</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('kys.code.index')}}" class="nav-link"><span data-key="t-job">Yeni KYS Kodu</span> <span class="badge badge-pill bg-success" data-key="t-new">+</span></a>
+                                <a href="{{route('kys.code.create')}}" class="nav-link"><span data-key="t-job">Yeni KYS Kodu Ekle</span> <span class="badge badge-pill bg-success" data-key="t-new">+</span></a>
                             </li>
                         </ul>
                     </div>
