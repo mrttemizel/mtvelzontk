@@ -40,8 +40,10 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header d-flex justify-content-between align-items-center">
                                 <h5 class="card-title mb-0">Kullanıcı Listesi</h5>
+                                <a href="{{ route('users.create') }}" class="btn btn-primary waves-effect waves-light d-flex justify-content-between"><i class="ri-add-box-line"></i> &nbsp; Yeni Kullanıcı Ekle</a>
+
                             </div>
                             <div class="card-body">
                                 <table id="datatable" class="display" style="width:100%">
@@ -109,6 +111,27 @@
     <script src="{{asset("backend/assets/libs/datatable/buttons.html5.min.js")}}"></script>
 
     <script src="{{asset('backend/assets/libs/datatable/mydatatable.js')}}"></script>
+
+    <script>
+        $(document).on('click', '#delete_user', function () {
+            var user_id = $(this).attr('data-id');
+            const url = $(this).attr('data-url');
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Bu kullanıcıyı silmek istediğinize emin misiniz?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Evet, sil!',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            });
+        });
+    </script>
 
 @endsection
 

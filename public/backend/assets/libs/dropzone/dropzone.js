@@ -310,7 +310,7 @@ var $b657c03155fc27e2$var$defaultOptions = {
     /**
    * This is the element the hidden input field (which is used when clicking on the
    * dropzone to trigger file selection) will be appended to. This might
-   * be important in case you use frameworks to switch the content of your page.
+   * be important in case you use framework to switch the content of your page.
    *
    * Can be a selector string, or an element directly.
    */ hiddenInputContainer: "body",
@@ -1102,7 +1102,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function(Emitter) {
                                 return _this9.emit("dragend", e);
                             }
                         }
-                    }, 
+                    },
                 ];
                 this.clickableElements.forEach(function(clickableElement) {
                     var _this11 = _this10;
@@ -2485,7 +2485,7 @@ var $a601ff30f483e917$export$2e2bcd8739ae039 = /*#__PURE__*/ function(Emitter) {
                     "reset",
                     "maxfilesexceeded",
                     "maxfilesreached",
-                    "queuecomplete", 
+                    "queuecomplete",
                 ];
                 this.prototype._thumbnailQueue = [];
                 this.prototype._processingThumbnail = false;
@@ -2606,7 +2606,7 @@ $a601ff30f483e917$export$2e2bcd8739ae039.discover = function() {
 // incorrectly **
 $a601ff30f483e917$export$2e2bcd8739ae039.blockedBrowsers = [
     // The mac os and windows phone version of opera 12 seems to have a problem with the File drag'n'drop API.
-    /opera.*(Macintosh|Windows Phone).*version\/12/i, 
+    /opera.*(Macintosh|Windows Phone).*version\/12/i,
 ];
 // Checks if the browser is supported
 $a601ff30f483e917$export$2e2bcd8739ae039.isBrowserSupported = function() {

@@ -41,7 +41,13 @@ Route::middleware('auth')->group(function (){
         Route::get('/kys-category/delete/{id}',[KyscategoryController::class,'delete'])->name('kys.category.delete');
 
         Route::get('/kys-code/index',[KysKodeController::class,'index'])->name('kys.code.index');
+        Route::get('/kys-code/create',[KysKodeController::class,'create'])->name('kys.code.create');
         Route::post('/kys-code/store',[KysKodeController::class,'store'])->name('kys.code.store');
+        Route::get('/kys-code/delete/{id}',[KysKodeController::class,'delete'])->name('kys.code.delete');
+        Route::get('/kys-code/edit/{id}',[KysKodeController::class,'edit'])->name('kys.code.edit');
+        Route::post('/kys-code/update',[KysKodeController::class,'update'])->name('kys.code.update');
+
+
 
     });
 });

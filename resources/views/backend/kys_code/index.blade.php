@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0">KYS Kodu Listesi</h5>
-                    <button type="button" class="btn btn-primary waves-effect waves-light d-flex justify-content-between"><i class="ri-add-box-line"></i> KYS Kodu Ekle</button>
+                    <a  href="{{ route('kys.code.create') }}" class="btn btn-primary waves-effect waves-light d-flex justify-content-between"><i class="ri-add-box-line"></i>&nbsp; KYS Kodu Ekle</a>
                 </div>
                 <div class="card-body">
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
@@ -47,8 +47,8 @@
                                 <td>{{$datas->getKysCategory->kys_category_name}}</td>
                                 <td>
                                     <div class="hstack gap-3 fs-15">
-                                        <a href="" class="link-primary"><i class="ri-settings-4-line"></i></a>
-                                        <a href="" class="link-danger" id="delete_user"><i class="ri-delete-bin-5-line"></i></a>
+                                        <a href="{{route('kys.code.edit', ['id' => $datas->id])}}" class="link-primary"><i class="ri-settings-4-line"></i></a>
+                                        <a href="javascript:void(0)" data-url={{route('kys.code.delete', ['id'=>$datas->id]) }} data-id={{ $datas->id }} class="link-danger" id="delete_user"><i class="ri-delete-bin-5-line"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -82,6 +82,27 @@
     <script src="{{asset("backend/assets/libs/datatable/buttons.html5.min.js")}}"></script>
 
         <script src="{{asset('backend/assets/libs/datatable/mydatatable.js')}}"></script>
+
+        <script>
+            $(document).on('click', '#delete_user', function () {
+                var user_id = $(this).attr('data-id');
+                const url = $(this).attr('data-url');
+                Swal.fire({
+                    title: 'Emin misiniz?',
+                    text: "Bu Kys Kodunu silmek istediğinize emin misiniz?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Evet, sil!',
+                    cancelButtonText: 'Vazgeç'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = url;
+                    }
+                });
+            });
+        </script>
 
 @endsection
 

@@ -26,9 +26,9 @@ class KyscategoryController extends Controller
 
         $query = $data->save();
         if (!$query) {
-            return back()->with('error', 'Kullanıcı eklenirken bir hata oluştu!');
+            return back()->with('error', 'KYS Kategori eklenirken bir hata oluştu!');
         } else {
-            return back()->with('success', 'Kategori ekleme başarılı.');
+            return back()->with('success', 'KYS Kategori ekleme başarılı.');
         }
     }
 
@@ -38,9 +38,9 @@ class KyscategoryController extends Controller
 
         $query = $data->delete();
         if (!$query) {
-            return back()->with('error', 'Kategori düzenlerken bir hata oluştu!');
+            return back()->with('error', 'KYS Kategori silme bir hata oluştu!');
         } else {
-            return back()->with('success', 'Kategori silme işlemi başarılı.');
+            return back()->with('success', 'KYS Kategori silme işlemi başarılı.');
         }
     }
 
