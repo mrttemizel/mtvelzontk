@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->string('image')->nullable();
+            $table->string('project_activities')->nullable();
+            $table->string('education_activities')->nullable();
+            $table->string('ssk_activities')->nullable();
+            $table->string('cultural_activities')->nullable();
             $table->string('token')->nullable();
             $table->timestamps();
         });

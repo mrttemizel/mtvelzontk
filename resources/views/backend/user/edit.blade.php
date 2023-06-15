@@ -16,8 +16,10 @@
     @endcomponent
 
     <div class="row mt-5" >
+
         <div class="col-xxl-3">
             <div class="card mt-n5">
+
                 <form action="{{route('users.image.update')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{ $data->id }}">
@@ -119,7 +121,7 @@
                                                 </span>
                                         </div>
                                     </div>
-                                    <div class="col-xl-12 col-md-12">
+                                    <div class="col-xl-12 col-md-12 mb-3">
                                         <div>
                                             <label for="labelInput" class="form-label">Kullanıcı Rolü <span class="text-danger">*</span></label>
                                             <select class="form-select" name="status"  aria-label="Default select example">
@@ -135,7 +137,35 @@
                                     </span>
                                         </div>
                                     </div>
-
+                                    <div class="col-xl-12 col-md-12">
+                                        <div>
+                                            <label for="labelInput" class="form-label">Kullanıcı Form Yetki Durumu</label>
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="checkbox" name="project_activities" {{$data ->project_activities=='on' ? "checked" : ""}}>
+                                                <label class="form-check-label" for="formCheck6">
+                                                    Projeler
+                                                </label>
+                                            </div>
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="checkbox" name="education_activities" {{$data ->education_activities=='on' ? "checked" : ""}}>
+                                                <label class="form-check-label" for="formCheck6">
+                                                    Eğitim Faliyetleri
+                                                </label>
+                                            </div>
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="checkbox" name="ssk_activities" {{$data ->ssk_activities=='on' ? "checked" : ""}}>
+                                                <label class="form-check-label" for="formCheck6">
+                                                    SSK Faliyetleri
+                                                </label>
+                                            </div>
+                                            <div class="form-check mb-3">
+                                                <input class="form-check-input" type="checkbox" name="cultural_activities" {{$data ->cultural_activities=='on' ? "checked" : ""}}>
+                                                <label class="form-check-label" for="formCheck6">
+                                                    Kültürel Faliyetler
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <!--end col-->
                                     <div class="col-lg-12 mt-3">
                                         <div class="hstack gap-2 justify-content-end">

@@ -47,7 +47,13 @@ class UserController extends Controller
         $data->email = $request->input('email');
         $data->phone = $request->input('phone');
         $data->status = $request->status;
+
+        $data->project_activities = $request->project_activities;
+        $data->education_activities = $request->education_activities;
+        $data->ssk_activities = $request->ssk_activities;
+        $data->cultural_activities = $request->cultural_activities;
         $data->password = Hash::make($request->input('password'));
+
 
 
         $query = $data->save();
@@ -166,13 +172,17 @@ class UserController extends Controller
         $data->email = $request->input('email');
         $data->phone = $request->input('phone');
         $data->status = $request->status;
+        $data->project_activities = $request->project_activities;
+        $data->education_activities = $request->education_activities;
+        $data->ssk_activities = $request->ssk_activities;
+        $data->cultural_activities = $request->cultural_activities;
 
         $query = $data->update();
 
         if (!$query) {
-            return back()->with($notification_error);
+            return redirect()->route('users.index')->with($notification_error);
         } else {
-            return back()->with($notification_success);
+            return redirect()->route('users.index')->with($notification_success);
         }
     }
 
