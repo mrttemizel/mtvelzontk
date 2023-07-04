@@ -49,9 +49,24 @@
                                 <a href="{{route('kys.code.create')}}" class="nav-link"><span data-key="t-job">Yeni KYS Kodu Ekle</span> <span class="badge badge-pill bg-success" data-key="t-new">+</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('kys.code.index')}}" class="nav-link"><span data-key="t-job">KYS Kodu Listele</span> <span class="badge badge-pill bg-success" data-key="t-new">+</span></a>
+                                <a href="{{route('kys.code.index')}}" class="nav-link"><span data-key="t-job">KYS Kodu Listele</span></a>
                             </li>
 
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarProject" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                        <i class="ri-file-line"></i> <span data-key="t-apps">Proje</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarProject">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{route('project.create')}}" class="nav-link"><span data-key="t-job">Yeni Proje Ekle</span> <span class="badge badge-pill bg-success" data-key="t-new">+</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('project.index')}}" class="nav-link"><span data-key="t-job">Proje Listele</span></a>
+                            </li>
                         </ul>
                     </div>
                 </li>

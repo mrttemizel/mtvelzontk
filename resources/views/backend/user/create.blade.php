@@ -150,13 +150,13 @@
                                         <div class="form-check mb-3">
                                             <input class="form-check-input" type="checkbox" name="ssk_activities">
                                             <label class="form-check-label" for="formCheck6">
-                                                SSK Faliyetleri
+                                                SKS Faliyetleri
                                             </label>
                                         </div>
                                         <div class="form-check mb-3">
                                             <input class="form-check-input" type="checkbox" name="cultural_activities">
                                             <label class="form-check-label" for="formCheck6">
-                                                Kültürel Faliyetler
+                                                Tanıtım - Kültürel Faliyetler
                                             </label>
                                         </div>
                                     </div>

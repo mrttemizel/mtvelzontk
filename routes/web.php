@@ -3,6 +3,7 @@
 use App\Http\Controllers\backend\auth\AuthController;
 use App\Http\Controllers\backend\kys\KyscategoryController;
 use App\Http\Controllers\backend\kys\KysKodeController;
+use App\Http\Controllers\backend\project\ProjectController;
 use App\Http\Controllers\backend\user\UserController;
 
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,10 @@ Route::middleware('auth')->group(function (){
         Route::get('/kys-code/edit/{id}',[KysKodeController::class,'edit'])->name('kys.code.edit');
         Route::post('/kys-code/update',[KysKodeController::class,'update'])->name('kys.code.update');
 
+
+        Route::get('/project/index',[ProjectController::class,'index'])->name('project.index');
+        Route::get('/project/create',[ProjectController::class,'create'])->name('project.create');
+        Route::post('/project/store',[ProjectController::class,'store'])->name('project.store');
 
 
     });
