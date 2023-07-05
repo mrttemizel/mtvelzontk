@@ -10,4 +10,8 @@ class Project extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function getKysCode(){
+        return $this->hasOne(KysCode::class,'id','kys_olcutu');
+    }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('kys_olcutu')->nullable();
+
             $table->longText('proje_adi')->nullable();
             $table->string('destek_alinan_kurum')->nullable();
             $table->string('cagri_tipi')->nullable();
@@ -26,6 +26,11 @@ return new class extends Migration
             $table->longText('proje_aciklama')->nullable();
             $table->longText('temel_alani')->nullable();
             $table->timestamps();
+
+
+            $table->unsignedBigInteger('kys_olcutu')->nullable();
+            $table->foreign('kys_olcutu')->references('id')->on('kys_codes')->onDelete('cascade');
+
         });
     }
 

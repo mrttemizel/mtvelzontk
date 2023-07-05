@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\KysCode;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -46,6 +47,19 @@ class ProjectController extends Controller
             return back()->with('error', 'Proje Ekleme Başarısız');
         } else {
             return back()->with('success', 'Proje Ekleme Başarılı.');
+        }
+    }
+
+    public function delete($id)
+    {
+        $data = Project::find($id);
+
+
+        $query = $data->delete();
+        if (!$query) {
+            return back()->with('error', 'Proje  düzenlerken bir hata oluştu!');
+        } else {
+            return back()->with('success', 'Proje işlemi başarılı.');
         }
     }
 }
