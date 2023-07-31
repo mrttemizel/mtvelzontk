@@ -1,6 +1,6 @@
 @extends('backend.components.master')
 @section('title')
-    PROJE LİSTESİ
+    EĞİTİM FALİYETLERİ LİSTESİ
 @endsection
 @section('css')
     <link href="{{asset('backend/assets/css/bootstrap.min.css')}}' rel="stylesheet" type="text/css" />
@@ -12,10 +12,10 @@
 @section('content')
     @component('backend.components.breadcrumb')
         @slot('li_1')
-            PROJE
+            EĞİTİM FALİYETLERİ
         @endslot
         @slot('title')
-            PROJE LİSTESİ
+            EĞİTİM FALİYETLERİ LİSTESİ
         @endslot
     @endcomponent
     <div class="row">
@@ -31,15 +31,15 @@
             @if (session()->get('error'))
                 <div class="alert alert-danger alert-dismissible alert-solid alert-label-icon fade show"
                      role="alert">
-                    <i class="ri-check-double-line label-icon"></i><strong>  {{ session()->get('error') }}</strong></strong>
+                    <i class="ri-check-double-line label-icon"></i><strong>  {{ session()->get('success') }}</strong></strong>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"
                             aria-label="Close"></button>
                 </div>
             @endif
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="card-title mb-0">Proje Listesi</h5>
-                    <a  href="{{ route('project.create') }}" class="btn btn-primary waves-effect waves-light d-flex justify-content-between"><i class="ri-add-box-line"></i>&nbsp; Proje Ekle</a>
+                    <h5 class="card-title mb-0"> Eğitim Faliyetleri Listesi</h5>
+                    <a  href="{{ route('education.create') }}" class="btn btn-primary waves-effect waves-light d-flex justify-content-between"><i class="ri-add-box-line"></i>&nbsp; Eğitim Faliyeti Ekle</a>
                 </div>
                 <div class="card-body">
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
@@ -68,23 +68,23 @@
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{$datas->getKysCode->code_name}}</td>
-                                <td>{{$datas->proje_adi}}</td>
-                                <td>{{$datas->destek_alinan_kurum}}</td>
-                                <td>{{$datas->cagri_tipi}}</td>
-                                <td>{{$datas->proje_no}}</td>
-                                <td>{{$datas->proje_butcesi}}</td>
+                                <td>{{$datas->faliyetin_adi}}</td>
+                                <td>{{$datas->faliyetin_tipi}}</td>
+                                <td>{{$datas->is_birligi}}</td>
+                                <td>{{$datas->faliyetin_butcesi}}</td>
                                 <td>{{Carbon\Carbon::parse($datas->baslangic_tarihi)->format('d-m-Y')}}</td>
                                 <td>{{Carbon\Carbon::parse($datas->bitis_tarihi)->format('d-m-Y')}}</td>
-                                <td>{{$datas->is_birligi}}</td>
-                                <td>{{$datas->arastirmacilar}}</td>
-                                <td>{{$datas->proje_aciklama}}</td>
+                                <td>{{$datas->hedef_kitlesi}}</td>
+                                <td>{{$datas->hedef_kitle_sayisi}}</td>
+                                <td>{{$datas->faliyeti_gerceklestiren_personel}}</td>
+                                <td>{{$datas->faliyetin_kisa_aciklamasi}}</td>
                                 <td>{{$datas->temel_alani}}</td>
 
 
                                 <td>
                                     <div class="hstack gap-3 fs-15">
-                                        <a href="{{route('project.edit', ['id' => $datas->id])}}" class="link-primary"><i class="ri-settings-4-line"></i></a>
-                                        <a href="javascript:void(0)" data-url={{route('project.delete', ['id'=>$datas->id]) }} data-id={{ $datas->id }} class="link-danger" id="delete_user"><i class="ri-delete-bin-5-line"></i></a>
+                                        <a href="{{route('education.edit', ['id' => $datas->id])}}" class="link-primary"><i class="ri-settings-4-line"></i></a>
+                                        <a href="javascript:void(0)" data-url={{route('education.delete', ['id'=>$datas->id]) }} data-id={{ $datas->id }} class="link-danger" id="delete_education"><i class="ri-delete-bin-5-line"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -120,12 +120,12 @@
     <script src="{{asset('backend/assets/libs/datatable/mydatatable.js')}}"></script>
 
     <script>
-        $(document).on('click', '#delete_user', function () {
-            var user_id = $(this).attr('data-id');
+        $(document).on('click', '#delete_education', function () {
+            var education_id = $(this).attr('data-id');
             const url = $(this).attr('data-url');
             Swal.fire({
                 title: 'Emin misiniz?',
-                text: "Bu Projeyi silmek istediğinize emin misiniz?",
+                text: "Bu Eğitim Faliyetini silmek istediğinize emin misiniz?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

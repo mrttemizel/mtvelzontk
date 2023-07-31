@@ -11,26 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('education', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->longText('proje_adi')->nullable();
-            $table->string('destek_alinan_kurum')->nullable();
-            $table->string('cagri_tipi')->nullable();
-            $table->string('proje_no')->nullable();
-            $table->string('proje_butcesi')->nullable();
+            $table->longText('faliyetin_adi')->nullable();
+            $table->string('faliyetin_tipi')->nullable();
+            $table->string('is_birligi')->nullable();
+            $table->string('faliyetin_butcesi')->nullable();
             $table->date('baslangic_tarihi')->nullable();
             $table->date('bitis_tarihi')->nullable();
-            $table->string('is_birligi')->nullable();
-            $table->string('arastirmacilar')->nullable();
-            $table->longText('proje_aciklama')->nullable();
-            $table->longText('temel_alani')->nullable();
+            $table->text('hedef_kitlesi')->nullable();
+            $table->string('hedef_kitle_sayisi')->nullable();
+            $table->string('faliyeti_gerceklestiren_personel')->nullable();
+            $table->longText('faliyetin_kisa_aciklamasi')->nullable();
+            $table->text('temel_alani')->nullable();
             $table->timestamps();
 
 
             $table->unsignedBigInteger('kys_olcutu')->nullable();
             $table->foreign('kys_olcutu')->references('id')->on('kys_codes')->onDelete('cascade');
-
         });
     }
 
@@ -39,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('education');
     }
 };
