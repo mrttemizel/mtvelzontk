@@ -6,6 +6,7 @@ $(document).ready(function() {
 
         "dom": "<'row'<'col-sm-12 text-right mb-3'B>><'row'<'col-sm-6'l><'col-sm-6'f>>rtip",
         paging: true,
+        scrollX: true,
         fixedHeader: {headerOffset: 45},
         buttons: {
             name: 'primary',

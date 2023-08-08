@@ -36,12 +36,12 @@
             <div class="card ">
                 <div class="card-header align-items-center d-flex">
                     <h4 class="card-title mb-0 flex-grow-1">Proje Düzenle</h4>
-                    <a href="{{ route('project.index') }}"
+                    <a href="{{ route('activity.index') }}"
                        class="btn btn-primary waves-effect waves-light d-flex justify-content-between"><i
                             class="ri-arrow-go-back-fill"></i> &nbsp; Geri Dön</a>
 
                 </div><!-- end card header -->
-                <form action="{{route('project.update')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('activity.update')}}" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="{{$data->id}}">
                     @csrf
                     <div class="card-body">

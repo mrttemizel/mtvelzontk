@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\activity\ActivityController;
 use App\Http\Controllers\backend\auth\AuthController;
 use App\Http\Controllers\backend\education\EducationController;
 use App\Http\Controllers\backend\kys\KyscategoryController;
@@ -49,34 +50,14 @@ Route::middleware('auth')->group(function (){
         Route::post('/kys-code/update',[KysKodeController::class,'update'])->name('kys.code.update');
 
 
-        Route::get('/project/index',[ProjectController::class,'index'])->name('project.index');
-        Route::get('/project/create',[ProjectController::class,'create'])->name('project.create');
-        Route::post('/project/store',[ProjectController::class,'store'])->name('project.store');
-        Route::get('/project/delete/{id}',[ProjectController::class,'delete'])->name('project.delete');
-        Route::get('/project/edit/{id}',[ProjectController::class,'edit'])->name('project.edit');
-        Route::post('/project/update',[ProjectController::class,'update'])->name('project.update');
+        Route::get('/activity/index',[ActivityController::class,'index'])->name('activity.index');
+        Route::get('/activity/create',[ActivityController::class,'create'])->name('activity.create');
+        Route::post('/activity/store',[ActivityController::class,'store'])->name('activity.store');
+        Route::get('/activity/edit/{id}',[ActivityController::class,'edit'])->name('activity.edit');
+        Route::get('/activity/delete/{id}',[ActivityController::class,'delete'])->name('activity.delete');
 
 
-        Route::get('/education/index',[EducationController::class,'index'])->name('education.index');
-        Route::get('/education/create',[EducationController::class,'create'])->name('education.create');
-        Route::post('/education/store',[EducationController::class,'store'])->name('education.store');
-        Route::get('/education/delete/{id}',[EducationController::class,'delete'])->name('education.delete');
-        Route::get('/education/edit/{id}',[EducationController::class,'edit'])->name('education.edit');
-        Route::post('/education/update',[EducationController::class,'update'])->name('education.update');
 
-        Route::get('/sks/index',[SksController::class,'index'])->name('sks.index');
-        Route::get('/sks/create',[SksController::class,'create'])->name('sks.create');
-        Route::post('/sks/store',[SksController::class,'store'])->name('sks.store');
-        Route::get('/sks/delete/{id}',[SksController::class,'delete'])->name('sks.delete');
-        Route::get('/sks/edit/{id}',[SksController::class,'edit'])->name('sks.edit');
-        Route::post('/sks/update',[SksController::class,'update'])->name('sks.update');
-
-        Route::get('/cultural/index',[CulturalController::class,'index'])->name('cultural.index');
-        Route::get('/cultural/create',[CulturalController::class,'create'])->name('cultural.create');
-        Route::post('/cultural/store',[CulturalController::class,'store'])->name('cultural.store');
-        Route::get('/cultural/delete/{id}',[CulturalController::class,'delete'])->name('cultural.delete');
-        Route::get('/cultural/edit/{id}',[CulturalController::class,'edit'])->name('cultural.edit');
-        Route::post('/cultural/update',[CulturalController::class,'update'])->name('cultural.update');
 
 
     });
