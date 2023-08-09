@@ -109,4 +109,11 @@ class ActivityController extends Controller
 
 
     }
+
+
+    public  function  edit($id){
+        $data = Activity::where('id',$id)->first();
+        return view('backend.activity.edit',compact('data'));
+
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backend\auth;
 
+use App\Charts\MonthlyUsersChart;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,8 +18,8 @@ class AuthController extends Controller
         return view('backend.auth.login');
     }
 
-    public function index(){
-        return view('backend.index');
+    public function index(MonthlyUsersChart $chart){
+        return view('backend.index', ['chart' => $chart->build()]);
     }
 
     public function reset_password_page(){

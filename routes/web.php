@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function (){
         Route::post('/activity/store',[ActivityController::class,'store'])->name('activity.store');
         Route::get('/activity/edit/{id}',[ActivityController::class,'edit'])->name('activity.edit');
         Route::get('/activity/delete/{id}',[ActivityController::class,'delete'])->name('activity.delete');
+        Route::post('/activity/update',[ActivityController::class,'update'])->name('activity.update');
 
 
 
