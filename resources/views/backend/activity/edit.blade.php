@@ -46,16 +46,24 @@
                     <div class="card-body">
                         <div class="live-preview">
                             <div class="row gy-3">
+                                <input type="hidden" name="id" value="{{$data->id}}">
                                 <div class="col-xl-12 col-md-12">
                                     <div>
-                                        <label for="labelInput" class="form-label">Etkinlik Teması <span class="text-danger">*</span></label>
+                                        <label for="labelInput" class="form-label">Etkinlik Teması <span
+                                                class="text-danger">*</span></label>
                                         <select class="form-select" name="etkinlik_teması"
                                                 aria-label="Default select example">
                                             <option selected="" disabled>Etkinlik Teması Seçiniz</option>
-                                            <option value="1">Sosyal</option>
-                                            <option value="2">Kültürel</option>
-                                            <option value="3">Ekonomik</option>
-                                            <option value="4">Saglik</option>
+                                            <option value="1" {{$data->etkinlik_teması == 1 ? "selected" : ""}}>Sosyal
+                                            </option>
+                                            <option value="2" {{$data->etkinlik_teması == 2 ? "selected" : ""}}>
+                                                Kültürel
+                                            </option>
+                                            <option value="3" {{$data->etkinlik_teması == 3 ? "selected" : ""}}>
+                                                Ekonomik
+                                            </option>
+                                            <option value="4" {{$data->etkinlik_teması == 4 ? "selected" : ""}}>Saglik
+                                            </option>
 
                                         </select>
                                         <span class="text-danger">
@@ -82,7 +90,7 @@
                                     <div>
                                         <label for="basiInput" class="form-label">Amaç</label>
                                         <input type="text" name="amac" placeholder="Amaç"
-                                               class="form-control"  value="{{$data->amac}}">
+                                               class="form-control" value="{{$data->amac}}">
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -90,7 +98,7 @@
                                     <div>
                                         <label for="basiInput" class="form-label">Düzenleyen Birim</label>
                                         <input type="text" name="duzenleyen_birimi" placeholder="Düzenleyen Birim"
-                                               class="form-control"  value="{{$data->duzenleyen_birimi}}">
+                                               class="form-control" value="{{$data->duzenleyen_birimi}}">
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -98,15 +106,16 @@
                                     <div>
                                         <label for="basiInput" class="form-label">Sorumlu Kişiler</label>
                                         <input type="text" name="sorumlu_kisiler" placeholder="Sorumlu Kişiler"
-                                               class="form-control" value="{{ old('sorumlu_kisiler') }}">
+                                               class="form-control" value="{{$data->sorumlu_kisiler}}">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-xl-12 col-md-12">
                                     <div>
                                         <label for="basiInput" class="form-label">Katkı Sağlayan Birimler</label>
-                                        <input type="text" name="katki_saglayan_birimler" placeholder="Katkı Sağlayan Birimler"
-                                               class="form-control" value="{{ old('katki_saglayan_birimler') }}">
+                                        <input type="text" name="katki_saglayan_birimler"
+                                               placeholder="Katkı Sağlayan Birimler"
+                                               class="form-control" value="{{$data->katki_saglayan_birimler}}">
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -114,7 +123,7 @@
                                     <div>
                                         <label for="basiInput" class="form-label">Dış Paydaşlar</label>
                                         <input type="text" name="dis_paydaslar" placeholder="Dış Paydaşlar"
-                                               class="form-control" value="{{ old('dis_paydaslar') }}">
+                                               class="form-control" value="{{$data->dis_paydaslar}}">
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -122,7 +131,7 @@
                                     <div>
                                         <label for="basiInput" class="form-label">Katılımcı Kitle</label>
                                         <input type="text" name="katilimci_kitle" placeholder="Katılımcı Kitle"
-                                               class="form-control" value="{{ old('katilimci_kitle') }}">
+                                               class="form-control" value="{{$data->katilimci_kitle}}">
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -130,7 +139,7 @@
                                     <div>
                                         <label for="basiInput" class="form-label">Katılımcı Sayısı</label>
                                         <input type="text" name="katilimci_sayisi" placeholder="Katılımcı Sayısı"
-                                               class="form-control" value="{{ old('katilimci_sayisi') }}">
+                                               class="form-control" value="{{$data->katilimci_sayisi}}">
                                     </div>
                                 </div>
 
@@ -138,14 +147,16 @@
                                 <div class="col-xl-6 col-md-6">
                                     <div>
                                         <label for="basiInput" class="form-label">Başlangıç Tarihi</label>
-                                        <input type="date" class="form-control" name="baslangic_tarihi" id="exampleInputdate">
+                                        <input type="date" class="form-control" name="baslangic_tarihi"
+                                               id="exampleInputdate" value="{{$data->baslangic_tarihi}}">
                                     </div>
                                 </div>
                                 <!--end col-->
                                 <div class="col-xl-6 col-md-6">
                                     <div>
                                         <label for="basiInput" class="form-label">Bitiş Tarihi</label>
-                                        <input type="date" class="form-control" name="bitis_tarihi" id="exampleInputdate">
+                                        <input type="date" class="form-control" name="bitis_tarihi"
+                                               id="exampleInputdate" value="{{$data->bitis_tarihi}}">
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -153,7 +164,7 @@
                                     <div>
                                         <label for="basiInput" class="form-label">Etkinlik Yeri</label>
                                         <input type="text" name="etkinlik_yeri" placeholder="Etkinlik Yeri"
-                                               class="form-control" value="{{ old('etkinlik_yeri') }}">
+                                               class="form-control" value="{{$data->etkinlik_yeri}}">
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -161,7 +172,7 @@
                                     <div>
                                         <label for="basiInput" class="form-label">Planlanan Bütçe</label>
                                         <input type="text" name="planlanan_butce" placeholder="Planlanan Bütçe"
-                                               class="form-control" value="{{ old('planlanan_butce') }}">
+                                               class="form-control" value="{{$data->planlanan_butce}}">
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -169,7 +180,7 @@
                                     <div>
                                         <label for="basiInput" class="form-label">Gerçeklenen Bütçe</label>
                                         <input type="text" name="gerceklenen_butce" placeholder="Gerçeklenen Bütçe"
-                                               class="form-control" value="{{ old('gerceklenen_butce') }}">
+                                               class="form-control" value="{{$data->gerceklenen_butce}}">
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -179,35 +190,58 @@
                                         <select class="form-select" name="gerceklesme_durumu"
                                                 aria-label="Default select example">
                                             <option selected="" disabled>Gerçekleşme Durumu Seçiniz</option>
-                                            <option value="1">Planlama Aşamasında</option>
-                                            <option value="2">Devam Ediyor</option>
-                                            <option value="3">Tamamlandı</option>
+                                            <option value="1" {{$data->gerceklesme_durumu == 1 ? "selected" : ""}}>
+                                                Planlama Aşamasında
+                                            </option>
+                                            <option value="2" {{$data->gerceklesme_durumu == 2 ? "selected" : ""}}>Devam
+                                                Ediyor
+                                            </option>
+                                            <option value="3" {{$data->gerceklesme_durumu == 3 ? "selected" : ""}}>
+                                                Tamamlandı
+                                            </option>
                                         </select>
                                     </div>
                                     <div class="col-xl-12 col-md-12 mt-3">
                                         <div>
                                             <label for="labelInput" class="form-label">Açıklama</label>
-                                            <textarea  class="form-control"  name="aciklama"  placeholder="Message" rows="3"  cols="50" >
-
+                                            <textarea class="form-control" name="aciklama" placeholder="Message"
+                                                      rows="3" cols="50">
+                                            {{$data->aciklama}}
                                         </textarea>
                                         </div>
                                     </div>
+
+
                                     <div class="col-xl-12 col-md-12 mt-3">
+                                        @if($data->belge == "")
+                                            Belge Yüklenmemiş
+                                        @else
+                                            <a href="{{ asset('tk/belge/'.$data->belge) }}" target="_blank" class="btn btn-success btn-sm">YÜKLÜ BELGEYİ GÖR</a>
+                                        @endif
                                         <div>
                                             <label for="formFile" class="form-label">Belge <span class="text-danger"> Yükleyebilceğiniz dosya tipleri <b>"doc,docx,pdf,xsx"</b>.</span></label>
-                                            <input class="form-control"  type="file" name="belge">
+                                            <input class="form-control" type="file" name="belge">
+
                                             <span class="text-danger">
                                     @error('belge')
                                                 {{ $message }}
                                                 @enderror
                             </span>
                                         </div>
+
                                         <!-- end card -->
                                     </div>
                                     <div class="col-xl-12 col-md-12 mt-3">
+                                        @if($data->resim == "")
+                                            Resim Yüklenmemiş
+                                        @else
+                                            <a href="{{ asset('tk/resim/'.$data->resim) }}" target="_blank" class="btn btn-success btn-sm">YÜKLÜ RESMİ GÖR</a>
+                                        @endif
+
                                         <div>
                                             <label for="formFile" class="form-label">Resim <span class="text-danger"> Yükleyebilceğiniz dosya tipleri <b>"jpg,jpeg,png"</b>.</span></label>
-                                            <input class="form-control"  type="file" name="resim">
+                                            <input class="form-control" type="file" name="resim">
+
                                             <span class="text-danger">
                                     @error('resim')
                                                 {{ $message }}
@@ -220,7 +254,7 @@
 
                                     <div class="col-lg-12 mt-3">
                                         <div class="hstack gap-2 justify-content-end">
-                                            <button type="submit" class="btn btn-primary">Ekle</button>
+                                            <button type="submit" class="btn btn-primary">Güncelle</button>
                                         </div>
                                     </div>
                                 </div>

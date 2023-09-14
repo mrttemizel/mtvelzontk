@@ -1,4 +1,4 @@
-@extends('backend.components.master')
+  @extends('backend.components.master')
 @section('title')
     Etkinlik Ekle
 @endsection

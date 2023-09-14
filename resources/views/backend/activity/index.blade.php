@@ -74,7 +74,7 @@
                                 <td>{{$i}}</td>
                                 <td>
                                     @if($datas->etkinlik_teması == 1)
-                                    <td>Sosyal</td>
+                                    Sosyal
                                     @elseif($datas->etkinlik_teması == 2)
                                     Kültürel
                                     @elseif($datas->etkinlik_teması == 3)

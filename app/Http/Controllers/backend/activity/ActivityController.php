@@ -17,7 +17,6 @@ class ActivityController extends Controller
     public function delete($id)
     {
         $data = Activity::find($id);
-
         $path = public_path() . '/tk/belge' . $data->belge;
 
         if (\File::exists($path)) {
@@ -69,7 +68,7 @@ class ActivityController extends Controller
         $data->planlanan_butce = $request->input('planlanan_butce');
         $data->gerceklenen_butce = $request->input('gerceklenen_butce');
         $data->gerceklesme_durumu = $request->input('gerceklesme_durumu');
-        $data->aciklama = $request->input('aciklama');
+        $data->aciklama = trim($request->input('aciklama'));
         $data->user_id = Auth::user()->id;
 
 
@@ -115,5 +114,12 @@ class ActivityController extends Controller
         $data = Activity::where('id',$id)->first();
         return view('backend.activity.edit',compact('data'));
 
+    }
+
+    public  function update(Request $request)
+    {
+        $data = Activity::where('id', $request->input('id'))->first();
+
+        dd($data);
     }
 }
