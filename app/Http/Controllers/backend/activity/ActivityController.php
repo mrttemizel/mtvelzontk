@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class ActivityController extends Controller
 {
@@ -49,7 +50,8 @@ class ActivityController extends Controller
         $request->validate([
             'etkinlik_teması' => 'required',
             'etkinlik_basligi' => 'required',
-
+            'resim' => 'image|mimes:jpg,jpeg,png|max:2048',
+            'belge' => 'file|mimes:pdf,xlsx,docx|max:2048',
 
         ]);
 
@@ -73,29 +75,21 @@ class ActivityController extends Controller
 
 
         if ($request->hasFile('resim')) {
-            $request->validate([
-                'resim' => 'image|mimes:jpg,jpeg,png|max:2048',
-            ]);
 
-            $imagename = 'TK-R-'.Auth::user()->id.'.'.time();
-            $file = $request->file('resim');
-            $extention = $file->getClientOriginalExtension();
-            $filname = $imagename . '-' . 'resim' . '.' . $extention;
-            $file->move('tk/resim', $filname);
-            $data->resim = $filname;
+            $resim = $request->file('resim');
+            $resimname= time().'-'.uniqid().'.'.$resim->getClientOriginalExtension();
+            $resim->move('tk/resim',$resimname);
+            $data->resim = $resimname;
+
         }
 
         if ($request->hasFile('belge')) {
-            $request->validate([
-                'belge' => 'file|mimes:doc,docx,pdf,xsx|max:2048',
-                ]);
 
-            $belgename = 'TK-B-'.Auth::user()->id.'.'.time();
-            $file2 = $request->file('belge');
-            $extention = $file2->getClientOriginalExtension();
-            $filname2 = $belgename . '-' . 'belge' . '.' . $extention;
-            $file2->move('tk/belge', $filname2);
-            $data->belge = $filname2;
+            $belge = $request->file('belge');
+            $belgename= time().'-'.uniqid().'.'.$belge->getClientOriginalExtension();
+            $belge->move('tk/belge',$belgename);
+            $data->belge = $belgename;
+
         }
 
 
@@ -118,8 +112,44 @@ class ActivityController extends Controller
 
     public  function update(Request $request)
     {
-        $data = Activity::where('id', $request->input('id'))->first();
+        $notification_success = array(
+            'message' => 'Güncelleme Başarılı',
+            'alert-type' => 'success'
+        );
 
-        dd($data);
+        $notification_error = array(
+            'message' => 'Güncelleme Başarısız',
+            'alert-type' => 'error'
+        );
+
+        $data = Activity::findOrFail($request->input('id'));
+
+        $request->validate([
+            'etkinlik_teması' => 'required',
+            'etkinlik_basligi' => 'required',
+
+        ]);
+
+        if ($request->hasFile('resim')) {
+
+            $deleteOldResim = public_path().'/tk/resim/'.$data->resim;
+
+            if (File::exists($deleteOldResim)) {
+                File::delete($deleteOldResim);
+            }
+            $resim = $request->file('resim');
+            $resimname= time().'-'.uniqid().'.'.$resim->getClientOriginalExtension();
+            $resim->move('tk/resim',$resimname);
+            $data->resim = $resimname;
+
+        }
+
+        $query = $data->update();
+
+        if (!$query) {
+            return back()->with($notification_error);
+        } else {
+            return back()->with($notification_success);
+        }
     }
 }

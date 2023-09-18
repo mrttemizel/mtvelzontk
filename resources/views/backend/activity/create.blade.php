@@ -194,7 +194,7 @@
                                     </div>
                                     <div class="col-xl-12 col-md-12 mt-3">
                                         <div>
-                                            <label for="formFile" class="form-label">Belge <span class="text-danger"> Yükleyebilceğiniz dosya tipleri <b>"doc,docx,pdf,xsx"</b>.</span></label>
+                                            <label for="formFile" class="form-label">Belge <span class="text-danger"> Yükleyebilceğiniz dosya tipleri <b>"pdf"</b>.</span></label>
                                             <input class="form-control"  type="file" name="belge">
                                             <span class="text-danger">
                                     @error('belge')
