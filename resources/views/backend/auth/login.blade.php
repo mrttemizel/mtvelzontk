@@ -93,6 +93,16 @@
                                             </div>
 
                                         </div>
+                                        <div class="mb-3">
+                                            <label  class="form-label">Google Re-Captcha :</label>
+                                            {!! NoCaptcha::renderJs() !!}
+                                            {!! NoCaptcha::display() !!}
+                                            <span class="text-danger">
+                                                    @error('g-recaptcha-response')
+                                                {{ $message }}
+                                                @enderror
+                                                </span>
+                                        </div>
                                         <div class="mt-4">
                                             <button class="btn btn-info w-100" type="submit">Giriş Yap</button>
                                         </div>
