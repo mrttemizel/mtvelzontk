@@ -18,23 +18,29 @@ class ActivityController extends Controller
     public function delete($id)
     {
         $data = Activity::find($id);
-        $path = public_path() . '/tk/belge' . $data->belge;
 
-        if (\File::exists($path)) {
-            \File::delete($path);
+        if (Auth::user()->status == 0)
+        {
+            return back()->with('error', 'Sadece Yöneticiler Etklinlikleri Silebilir!');
+        }
+        else{
+            $path = public_path().'/tk/belge/'.$data->belge;
+
+            if (\File::exists($path)) {
+                \File::delete($path);
+            }
+            $path2 = public_path().'/tk/resim/'.$data->resim;
+            if (\File::exists($path2)) {
+                \File::delete($path2);
+            }
+            $query = $data->delete();
+            if (!$query) {
+                return back()->with('error', 'Etkinlik silerken bir hata oluştu!');
+            } else {
+                return back()->with('success', 'Etkinlik silme işlemi başarılı.');
+            }
         }
 
-        $path2 = public_path() . '/tk/resim' . $data->resim;
-
-        if (\File::exists($path2)) {
-            \File::delete($path2);
-        }
-        $query = $data->delete();
-        if (!$query) {
-            return back()->with('error', 'Etkinlik silerken bir hata oluştu!');
-        } else {
-            return back()->with('success', 'Etkinlik silme işlemi başarılı.');
-        }
     }
 
     public  function index(){
@@ -106,8 +112,20 @@ class ActivityController extends Controller
 
     public  function  edit($id){
         $data = Activity::where('id',$id)->first();
-        return view('backend.activity.edit',compact('data'));
 
+        if (Auth::user()->status == 0){
+            if (Auth::user()->id == $data->user_id)
+            {
+                return view('backend.activity.edit',compact('data'));
+            }
+            else{
+                return back()->with('error', 'Kullanıcılar sadece kendi eklediği projeleri düzenyelebilir!');
+            }
+        }
+        else{
+
+            return view('backend.activity.edit',compact('data'));
+        }
     }
 
     public  function update(Request $request)
@@ -127,6 +145,8 @@ class ActivityController extends Controller
         $request->validate([
             'etkinlik_teması' => 'required',
             'etkinlik_basligi' => 'required',
+            'resim' => 'image|mimes:jpg,jpeg,png|max:2048',
+            'belge' => 'file|mimes:pdf,xlsx,docx|max:2048',
 
         ]);
 
@@ -144,6 +164,35 @@ class ActivityController extends Controller
 
         }
 
+        if ($request->hasFile('belge')) {
+
+            $deleteOldBelge = public_path().'/tk/belge/'.$data->belge;
+
+            if (File::exists($deleteOldBelge)) {
+                File::delete($deleteOldBelge);
+            }
+            $belge = $request->file('belge');
+            $belgename= time().'-'.uniqid().'.'.$belge->getClientOriginalExtension();
+            $belge->move('tk/belge',$belgename);
+            $data->belge = $belgename;
+
+        }
+        $data->etkinlik_teması = $request->input('etkinlik_teması');
+        $data->etkinlik_basligi = $request->input('etkinlik_basligi');
+        $data->amac = $request->input('amac');
+        $data->duzenleyen_birimi = $request->input('duzenleyen_birimi');
+        $data->sorumlu_kisiler = $request->input('sorumlu_kisiler');
+        $data->katki_saglayan_birimler = $request->input('katki_saglayan_birimler');
+        $data->dis_paydaslar = $request->input('dis_paydaslar');
+        $data->katilimci_kitle = $request->input('katilimci_kitle');
+        $data->katilimci_sayisi = $request->input('katilimci_sayisi');
+        $data->baslangic_tarihi = $request->input('baslangic_tarihi');
+        $data->bitis_tarihi = $request->input('bitis_tarihi');
+        $data->etkinlik_yeri = $request->input('etkinlik_yeri');
+        $data->planlanan_butce = $request->input('planlanan_butce');
+        $data->gerceklenen_butce = $request->input('gerceklenen_butce');
+        $data->gerceklesme_durumu = $request->input('gerceklesme_durumu');
+        $data->aciklama = trim($request->input('aciklama'));
         $query = $data->update();
 
         if (!$query) {

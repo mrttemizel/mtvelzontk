@@ -29,6 +29,7 @@
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboard</span>
                     </a>
                 </li> <!-- end Dashboard Menu -->
+                @if(Auth::user()->status==2  or Auth::user()->status==1 )
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarUsers" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                             <i class="ri-shield-user-line"></i> <span data-key="t-dashboards">Kullanıcılar</span>
@@ -45,6 +46,8 @@
                             </ul>
                         </div>
                     </li> <!-- end Dashboard Menu -->
+                @endif
+                @if(Auth::user()->status==2)
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarCategory" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
                             <i class="ri-apps-2-line"></i> <span data-key="t-apps">Kys</span>
@@ -61,6 +64,7 @@
                             </ul>
                         </div>
                     </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#activityCategory" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
                         <i class="ri-newspaper-line"></i> <span data-key="t-apps">Etkinlik</span>

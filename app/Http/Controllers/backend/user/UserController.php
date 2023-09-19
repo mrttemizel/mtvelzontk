@@ -48,10 +48,7 @@ class UserController extends Controller
         $data->phone = $request->input('phone');
         $data->status = $request->status;
 
-        $data->project_activities = $request->project_activities;
-        $data->education_activities = $request->education_activities;
-        $data->ssk_activities = $request->ssk_activities;
-        $data->cultural_activities = $request->cultural_activities;
+
         $data->password = Hash::make($request->input('password'));
 
 

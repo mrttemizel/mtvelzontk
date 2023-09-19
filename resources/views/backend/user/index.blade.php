@@ -6,6 +6,7 @@
     <link href="{{asset('backend/assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
 
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 
 
 @endsection
@@ -68,9 +69,7 @@
                                             <td>{{$datas->name}}</td>
                                             <td>{{$datas->email}}</td>
                                             <td>{{$datas->phone}}</td>
-                                            @if ($datas->status == 2 )
-                                                <td><h6 class="text-success fs-13 mb-0">Süper Admin</h6></td>
-                                            @elseif($datas->status == 1 )
+                                            @if ($datas->status == 1 )
                                                 <td><h6 class="text-success fs-13 mb-0">Yönetici</h6></td>
                                             @else
                                                 <td><h6 class="text-success fs-13 mb-0">Kullanıcı</h6></td>

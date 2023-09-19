@@ -38,12 +38,11 @@
                                 </div>
                             </div>
                             <h5 class="fs-16 mb-1">{{ $data->name }}</h5>
-                            <p class="text-muted mb-0">     @if ($data->status == 2 )
-                                    Super Admin
-                                @elseif($data->status == 1 )
+                            <p class="text-muted mb-0">
+                                @if ($data->status == 1 )
                                     Yönetici
                                 @else
-                                    Editor
+                                    Kullanıcı
                                 @endif</p>
                         </div>
                     </div>
@@ -128,42 +127,13 @@
                                                 <option value="1" {{ $data->status == 1 ? 'selected' : '' }}>
                                                     Yönetici</option>
                                                 <option value="0"{{ $data->status == 0 ? 'selected' : '' }}>
-                                                    Editör</option>
+                                                    Kullanıcı</option>
                                             </select>
                                             <span class="text-danger">
                                     @error('status')
                                                 {{ $message }}
                                                 @enderror
                                     </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-12 col-md-12">
-                                        <div>
-                                            <label for="labelInput" class="form-label">Kullanıcı Form Yetki Durumu</label>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" type="checkbox" name="project_activities" {{$data ->project_activities=='on' ? "checked" : ""}}>
-                                                <label class="form-check-label" for="formCheck6">
-                                                    Projeler
-                                                </label>
-                                            </div>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" type="checkbox" name="education_activities" {{$data ->education_activities=='on' ? "checked" : ""}}>
-                                                <label class="form-check-label" for="formCheck6">
-                                                    Eğitim Faliyetleri
-                                                </label>
-                                            </div>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" type="checkbox" name="ssk_activities" {{$data ->ssk_activities=='on' ? "checked" : ""}}>
-                                                <label class="form-check-label" for="formCheck6">
-                                                    SKS Faliyetleri
-                                                </label>
-                                            </div>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" type="checkbox" name="cultural_activities" {{$data ->cultural_activities=='on' ? "checked" : ""}}>
-                                                <label class="form-check-label" for="formCheck6">
-                                                    Tanıtım - Kültürel Faliyetler
-                                                </label>
-                                            </div>
                                         </div>
                                     </div>
                                     <!--end col-->
