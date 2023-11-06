@@ -95,12 +95,13 @@
                                         </div>
                                         <div class="mb-3">
                                             <label  class="form-label">Google Re-Captcha :</label>
-                                            {!! NoCaptcha::renderJs() !!}
-                                            {!! NoCaptcha::display() !!}
+                                            <div id="recaptcha_form"></div>
                                             <span class="text-danger">
-                                                    @error('g-recaptcha-response')
-                                                {{ $message }}
-                                                @enderror
+                                            @error('g-recaptcha-response')
+                                            {{ $message }}
+                                            @enderror
+
+                                        </div>
                                                 </span>
                                         </div>
                                         <div class="mt-4">
@@ -128,3 +129,9 @@
 
 @endsection
 
+@section('addjs')
+
+
+    {!!  GoogleReCaptchaV2::render('recaptcha_form') !!}
+
+@endsection

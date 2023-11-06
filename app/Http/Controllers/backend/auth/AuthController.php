@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\Websiteemail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use TimeHunter\LaravelGoogleReCaptchaV2\Validations\GoogleReCaptchaV2ValidationRule;
 
 use Illuminate\Http\RedirectResponse;
 class AuthController extends Controller
@@ -30,6 +31,8 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+            'g-recaptcha-response' => [new GoogleReCaptchaV2ValidationRule()]
+
 
 
         ]);
